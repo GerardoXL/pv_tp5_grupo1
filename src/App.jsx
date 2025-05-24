@@ -8,8 +8,13 @@ const [alumnos , setAlumnos] = useState([]);
 
 //funcion flecha para agregar el objeto alumno al array
 const agregarAlumno = (alumno) => {
- setAlumnos([...alumnos, alumno ]);
- console.log("Alumnos:", alumnos);
+  const existe = alumnos.some(a => a.libreta === alumno.libreta);
+  if (existe) {
+    alert("Ya existe un alumno con esa libreta universitaria.");
+  } else {
+    setAlumnos([...alumnos, alumno]);
+    console.log("Alumno agregado:", alumno);
+  }
 };
 
 useEffect(() => {
