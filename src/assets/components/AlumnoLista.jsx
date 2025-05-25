@@ -1,6 +1,6 @@
 import AlumnoItem from './AlumnoItem';
 
-export default function ListaAlumnos({ alumnos }) {
+export default function ListaAlumnos({ alumnos, onEliminar }) {  //recibe la lista de alumnos y la funcion onEliminar definida en app.jsx como elminarAlumno
   return (
     <div>
       <h2>Lista de Alumnos</h2>
@@ -18,7 +18,7 @@ export default function ListaAlumnos({ alumnos }) {
         </thead>
         <tbody>
           {alumnos.map((alumno) => (
-            <AlumnoItem key={alumno.libreta} alumno={alumno}  />
+            <AlumnoItem key={alumno.libreta} alumno={alumno} onEliminar={onEliminar}/> // pasa la funcion onEliminar recibida desde app a AlumnoItem
           ))}
         </tbody>
       </table>

@@ -18,6 +18,12 @@ const agregarAlumno = (alumno) => {
     console.log("Alumno agregado:", alumno);
   }
 };
+//se agrega la funcion para eliminar el objeto del array 
+const eliminarAlumno = (libreta) =>{
+    const nuevaLista = alumnos.filter((a) => a.libreta !== libreta);
+    setAlumnos(nuevaLista);
+  
+}
 
 useEffect(() => {
     console.log("lista de alumnos" , alumnos)
@@ -35,7 +41,7 @@ return(
           <>
           <AlumnoFormulario onAgregar={agregarAlumno} />
 
-          <ListaAlumnos alumnos={alumnos}  />
+          <ListaAlumnos alumnos={alumnos} onEliminar={eliminarAlumno}/> {/*paso la funcion eliminarAlumno como prop hacia el componente AlumnoLista */}
           
           </>
         }
