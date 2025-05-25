@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import {Routes,Route } from "react-router-dom";
 import AlumnoFormulario from "./assets/components/AlumnoAgregar";
 import ListaAlumnos from "./assets/components/AlumnoLista";
+import AlumnoDetalle from "./assets/components/AlumnoDetalle";
 function App() {
 
 //creacion del array
@@ -25,8 +27,23 @@ useEffect(() => {
 return(
     <div className="container">
       <h1>Gestión de Alumnos</h1>
-      <AlumnoFormulario onAgregar={agregarAlumno} />
-      <ListaAlumnos alumnos={alumnos}  />
+      {/*se agrega router para definir las rutas entre paginas cuando al hacer click
+      en ver detalle se muestre el componente AlumnoDetalle en la ruta /alumnos/:libreta"*/}
+      <Routes>  
+        <Route path="/"
+        element={
+          <>
+          <AlumnoFormulario onAgregar={agregarAlumno} />
+
+          <ListaAlumnos alumnos={alumnos}  />
+          
+          </>
+        }
+      />
+      <Route path="/alumnos/:libreta"
+      element={<AlumnoDetalle alumnos={alumnos} />}
+      />
+      </Routes>
     </div>
 );
 };
