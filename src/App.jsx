@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import {Routes,Route } from "react-router-dom";
 import AlumnoFormulario from "./assets/components/AlumnoAgregar";
 import ListaAlumnos from "./assets/components/AlumnoLista";
@@ -7,6 +7,8 @@ function App() {
 
 //creacion del array
 const [alumnos , setAlumnos] = useState([]);
+const [editar, setEditar] = useState(false);
+const [alumnoEditar,setAlumnoEditar] = useState('');
 
 //funcion flecha para agregar el objeto alumno al array
 const agregarAlumno = (alumno) => {
@@ -25,6 +27,18 @@ const eliminarAlumno = (libreta) =>{
   
 }
 
+const onEdit = (info) =>{
+    setAlumnoEditar( alumnos.find((a) => a.libreta === info.lu));
+    setEditar(info.estado);
+}
+
+const actulizarAlumno = (alumno) =>
+{
+  setAlumnos(alumnos.map((a)=>a.libreta===alumno.libreta ? alumno : a))
+  setEditar(false);
+  setAlumnoEditar({});
+}
+
 useEffect(() => {
     console.log("lista de alumnos" , alumnos)
 }, [alumnos]);
@@ -39,9 +53,9 @@ return(
         <Route path="/"
         element={
           <>
-          <AlumnoFormulario onAgregar={agregarAlumno} />
+          <AlumnoFormulario onAgregar={agregarAlumno} alumnoEdit={alumnoEditar} boolEdit={editar} onActualizar={actulizarAlumno}/>
 
-          <ListaAlumnos alumnos={alumnos} onEliminar={eliminarAlumno}/> {/*paso la funcion eliminarAlumno como prop hacia el componente AlumnoLista */}
+          <ListaAlumnos alumnos={alumnos} onEliminar={eliminarAlumno} onEdit={onEdit}/> {/*paso la funcion eliminarAlumno como prop hacia el componente AlumnoLista */}
           
           </>
         }

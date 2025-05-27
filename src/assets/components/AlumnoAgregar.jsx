@@ -1,7 +1,8 @@
-import {  useState } from "react";
+import { use } from "react";
+import {  useEffect, useState } from "react";
 
 // se declaran las variables de estado
-const AlumnoFormulario = ({onAgregar}) => {
+const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => {
    const [libreta , setLibreta] = useState("");
    const [nombre , setNombre] = useState("");
    const [apellido , setApellido] = useState("");
@@ -9,11 +10,23 @@ const AlumnoFormulario = ({onAgregar}) => {
    const [domicilio , setDomicilio] = useState("");
    const [telefono , setTelefono] = useState ("");
 
+useEffect(() => {
+  setLibreta(alumnoEdit.libreta)
+    setNombre(alumnoEdit.nombre);
+    setApellido(alumnoEdit.apellido);
+    setEmail(alumnoEdit.email);
+    setDomicilio(alumnoEdit.domicilio);
+    setTelefono(alumnoEdit.telefono);
+},[alumnoEdit,boolEdit]);
+
+
+
    //funcion para cargar los datos
 const cargarDatos = (event) => {
    event.preventDefault();
 
    //se crea el objeto que posteriormente sera ingresado al array
+
 const nuevoAlumno = {
   libreta,
   nombre,
@@ -23,16 +36,25 @@ const nuevoAlumno = {
   telefono,
   estado: true
 }
- // se llama a la funcion onAgregar para tomar el objeto y se limpian los campos
- onAgregar(nuevoAlumno);
-     setLibreta('')
-    setNombre('');
-    setApellido('');
-    setEmail('');
-    setDomicilio('');
-    setTelefono('');
+
+if(boolEdit !== true)
+  onAgregar(nuevoAlumno); // se llama a la funcion onAgregar para tomar el objeto y se limpian los campos
+else
+{
+  onActualizar(nuevoAlumno);
+}
+
+
+  setLibreta('')
+  setNombre('');
+  setApellido('');
+  setEmail('');
+  setDomicilio('');
+  setTelefono('');
    
 };
+
+
 
     return (
      <div className="container">
@@ -83,7 +105,7 @@ const nuevoAlumno = {
      required
     />
 
-    <button type="submit">Agregar Alumno</button>
+    <button type="submit">{boolEdit === false ? 'Agregar Alumno' : 'Editar Alumno' }</button>
      </form>
      </div>
 
