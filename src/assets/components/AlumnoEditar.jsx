@@ -1,4 +1,5 @@
 import AlumnoFormulario from "./AlumnoAgregar";
+import { Button, Col } from 'react-bootstrap'; //estilo para el boton
 
 const AlumnoEditar = ({luEditar,onEdit}) => {
 
@@ -14,7 +15,9 @@ const AlumnoEditar = ({luEditar,onEdit}) => {
     return(
         <>
         <div>
-            <button onClick={handleEditar}>Editar</button>
+            <Col md={4 }>
+            <Button variant="success" onClick={handleEditar}>Editar</Button>
+            </Col>
         </div>
         </>
     )

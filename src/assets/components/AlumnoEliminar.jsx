@@ -1,12 +1,19 @@
-export default function AlumnoEliminar({libreta, onEliminar}){
-    console.log("libreta: ",libreta);
-    console.log("oneliminar (tipo): ",typeof onEliminar);
-    console.log("oneliminar (valor): ",onEliminar);
-    const manejarClick = () => {  
-        onEliminar(libreta); //ejecuta la funcion eliminarAlumno definido en app.jsx
+import { Button, Col } from 'react-bootstrap';
 
+export default function AlumnoEliminar({ libreta, onEliminar }) {
+    console.log("libreta: ", libreta);
+    console.log("onEliminar (tipo): ", typeof onEliminar);
+    console.log("onEliminar (valor): ", onEliminar);
+
+    const manejarClick = () => {  
+        onEliminar(libreta); // ejecuta la función eliminarAlumno definida en app.jsx
     }
+
     return (
-        <button onClick={manejarClick}>Eliminar</button>
-    )
+        <Col md={4} >
+        <Button variant="danger" onClick={manejarClick}>
+            Eliminar
+        </Button>
+        </Col>
+    );
 }

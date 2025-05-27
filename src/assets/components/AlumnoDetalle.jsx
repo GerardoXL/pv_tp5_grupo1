@@ -1,4 +1,5 @@
 import {useParams, Link} from "react-router-dom";
+import { Button, Col } from 'react-bootstrap';
 
 export default function AlumnoDetalle({alumnos}){
     const {libreta}=useParams();
@@ -17,7 +18,7 @@ export default function AlumnoDetalle({alumnos}){
             <p>Telefono: {alumno.telefono}</p>
 
             <Link to="/">
-                <button>Volver a la lista</button> 
+                <Button variant="warning">Volver a la lista</Button> 
             </Link>
         </div>
     )
