@@ -1,5 +1,6 @@
 import { use } from "react";
 import {  useEffect, useState } from "react";
+import { Form, Button } from 'react-bootstrap'; //imporoto para usar bootstrap
 
 // se declaran las variables de estado
 const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => {
@@ -54,62 +55,85 @@ else
    
 };
 
-
-
-    return (
-     <div className="container">
-     <form onSubmit={cargarDatos}>
-     <input type="text"
-     placeholder="ingrese libreta" 
-     id="libreta"
-     value={libreta}
-     onChange={(e) => setLibreta(e.target.value)}
-     required
-    />
-    <input type="text"
-     placeholder="ingrese nombre" 
-     id="nombre"
-     value={nombre}
-     onChange={(e) => setNombre(e.target.value)}
-     required
+//el formulario lo modifico para usar bootstrap
+return (
+  
+  <Form onSubmit={cargarDatos}>
+    <Form.Group>
+      <Form.Label>Libreta</Form.Label>
+       <Form.Control
+          type="text"
+          placeholder="ingrese libreta" 
+          id="libreta"
+          value={libreta}
+          onChange={(e) => setLibreta(e.target.value)}
+          required
+        />
+    </Form.Group>
+    <Form.Group>
+      <Form.Label>Nombres</Form.Label>
+       <Form.Control
+        type="text"
+        placeholder="ingrese nombres" 
+        id="nombre"
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+        required
      />
+     </Form.Group>
 
-     <input type="text"
-     placeholder="ingrese apellido" 
-     id="apellido"
-     value={apellido}
-     onChange={(e) => setApellido(e.target.value)}
-     required
-     />
+     <Form.Group>
+      <Form.Label>Apellidos</Form.Label>
+       <Form.Control 
+          type="text"
+          placeholder="ingrese apellidos" 
+          id="apellido"
+          value={apellido}
+          onChange={(e) => setApellido(e.target.value)}
+          required
+        />
+   </Form.Group>
 
-    <input type="email"
-     placeholder="ingrese email" 
-     id="email"
-     value={email}
-     onChange={(e) => setEmail(e.target.value)}
-     required
-    />
+    <Form.Group>
+      <Form.Label>Email</Form.Label>
+       <Form.Control 
+          type="email"
+          placeholder="ingrese email" 
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+    </Form.Group>
 
-    <input type="text"
-     placeholder="ingrese domicilio" 
-     id="domicilio"
-     value={domicilio}
-     onChange={(e) => setDomicilio(e.target.value)}
-     required
-    />
-    <input type="tel"
-     placeholder="ingrese telefono" 
-     id="telefono"
-     value={telefono}
-     onChange={(e) => setTelefono(e.target.value)}
-     required
-    />
+    <Form.Group>
+      <Form.Label>Domicilio</Form.Label>
+       <Form.Control 
+          type="text"
+          placeholder="ingrese domicilio" 
+          id="domicilio"
+          value={domicilio}
+          onChange={(e) => setDomicilio(e.target.value)}
+          required
+        />
+    </Form.Group>
 
-    <button type="submit">{boolEdit === false ? 'Agregar Alumno' : 'Editar Alumno' }</button>
-     </form>
-     </div>
+    <Form.Group>
+      <Form.Label>Teléfono</Form.Label>
+       <Form.Control
+          type="tel"
+          placeholder="ingrese telefono" 
+          id="telefono"
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+          required
+        />
+    </Form.Group>
+
+    <Button type="submit" variant="primary">{ boolEdit===false ? 'Agregar Alumno' : 'Editar Alumno'}</Button>
+ </Form>
 
     );
 };
 
-export default AlumnoFormulario;
+export default AlumnoFormulario;  
