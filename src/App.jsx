@@ -3,6 +3,7 @@ import {Routes,Route } from "react-router-dom";
 import AlumnoFormulario from "./assets/components/AlumnoAgregar";
 import ListaAlumnos from "./assets/components/AlumnoLista";
 import AlumnoDetalle from "./assets/components/AlumnoDetalle";
+import Home from "./assets/components/Home";
 function App() {
 
 //creacion del array
@@ -50,6 +51,7 @@ return(
       {/*se agrega router para definir las rutas entre paginas cuando al hacer click
       en ver detalle se muestre el componente AlumnoDetalle en la ruta /alumnos/:libreta"*/}
       <Routes>  
+         <Route path="/" element={<Home cantidadAlumnos={alumnos.length} />} />
         <Route path="/"
         element={
           <>
