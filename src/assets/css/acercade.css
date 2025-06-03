@@ -1,0 +1,50 @@
+body{
+     background: linear-gradient(to right, rgb(42,110,191),rgb(29, 79, 139));
+}
+.acerca-container{
+    background: linear-gradient(to right, rgb(42,110,191),rgb(29, 79, 139));
+    padding: 20px;
+    border-radius: 30px;
+}
+.acerca-titulo{
+    font-family: sans-serif;
+    font-weight: 600;
+    color: white;
+     text-shadow: 1px 1px 2px black;
+}
+.acerca-subtitulo{
+    font-weight: 600;
+    color: white;
+     text-shadow: 1px 1px 2px black;
+}
+.acerca-parrafo{
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+     text-shadow: 1px 1px 2px black;
+}
+.cartas-custom{
+    background: linear-gradient(to right, rgb(150, 174, 204),rgb(31, 119, 228));
+    border-radius: 50px;
+    border:none;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    color: white;
+     text-shadow: 1px 1px 2px black;
+}
+.cartas-custom:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+.nombre-integrantes{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+.img-hover{
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.img-hover:hover{
+    transform: scale(1.05);
+}
