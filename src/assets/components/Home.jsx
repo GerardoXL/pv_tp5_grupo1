@@ -7,12 +7,10 @@ import {
   Col,
   Card,
 } from 'react-bootstrap';
-import Menu from './Navbar'; 
 
 const Home = ({ cantidadAlumnos }) => {
   return (
     <>
-      <Menu /> 
     <div className="home-container">
       <Container className="mt-4 main-content">
         <h2 className="text-center mb-4">Bienvenido al Sistema de Gestión de Alumnos</h2>

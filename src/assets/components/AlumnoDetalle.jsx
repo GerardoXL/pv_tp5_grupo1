@@ -3,7 +3,7 @@ import { Button, Col } from 'react-bootstrap';
 
 export default function AlumnoDetalle({alumnos}){
     const {libreta}=useParams();
-    const alumno = alumnos.find(a=> a.libreta === libreta);
+     const alumno = alumnos.find(a => a.libreta === parseInt(libreta));
     if (!alumno){
         return <p>Alumno no encontrado</p>;
     }
@@ -17,7 +17,7 @@ export default function AlumnoDetalle({alumnos}){
             <p>Domicilio: {alumno.domicilio}</p>
             <p>Telefono: {alumno.telefono}</p>
 
-            <Link to="/">
+            <Link to="/alumnos">
                 <Button variant="warning">Volver a la lista</Button> 
             </Link>
         </div>

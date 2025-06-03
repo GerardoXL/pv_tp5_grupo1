@@ -1,10 +1,10 @@
-import { use } from "react";
+
 import {  useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap'; //imporoto para usar bootstrap
 
+let lastLibreta = 999;
 // se declaran las variables de estado
-const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => {
-   const [libreta , setLibreta] = useState("");
+const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => { 
    const [nombre , setNombre] = useState("");
    const [apellido , setApellido] = useState("");
    const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => {
    const [telefono , setTelefono] = useState ("");
 
 useEffect(() => {
-  setLibreta(alumnoEdit.libreta)
     setNombre(alumnoEdit.nombre);
     setApellido(alumnoEdit.apellido);
     setEmail(alumnoEdit.email);
@@ -25,11 +24,13 @@ useEffect(() => {
    //funcion para cargar los datos
 const cargarDatos = (event) => {
    event.preventDefault();
+   lastLibreta += 1 ;
+   const nuevaLibreta = lastLibreta;
 
    //se crea el objeto que posteriormente sera ingresado al array
 
 const nuevoAlumno = {
-  libreta,
+  libreta : nuevaLibreta,
   nombre,
   apellido,
   email,
@@ -46,7 +47,6 @@ else
 }
 
 
-  setLibreta('')
   setNombre('');
   setApellido('');
   setEmail('');
@@ -59,17 +59,6 @@ else
 return (
   
   <Form onSubmit={cargarDatos}>
-    <Form.Group>
-      <Form.Label>Libreta</Form.Label>
-       <Form.Control
-          type="text"
-          placeholder="ingrese libreta" 
-          id="libreta"
-          value={libreta}
-          onChange={(e) => setLibreta(e.target.value)}
-          required
-        />
-    </Form.Group>
     <Form.Group>
       <Form.Label>Nombres</Form.Label>
        <Form.Control

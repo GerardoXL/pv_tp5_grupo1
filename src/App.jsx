@@ -1,9 +1,12 @@
-import { use, useEffect, useState } from "react";
-import {Routes,Route } from "react-router-dom";
+import {  useEffect, useState } from "react";
+import { BrowserRouter  , Routes, Route } from "react-router-dom";
 import AlumnoFormulario from "./assets/components/AlumnoAgregar";
 import ListaAlumnos from "./assets/components/AlumnoLista";
 import AlumnoDetalle from "./assets/components/AlumnoDetalle";
+import Menu from "./assets/components/Navbar";
 import Home from "./assets/components/Home";
+import AcercaDe from "./assets/components/Acercade";
+
 function App() {
 
 //creacion del array
@@ -46,27 +49,39 @@ useEffect(() => {
 
 
 return(
-    <div className="container">
-      <h1>Gestión de Alumnos</h1>
-      {/*se agrega router para definir las rutas entre paginas cuando al hacer click
-      en ver detalle se muestre el componente AlumnoDetalle en la ruta /alumnos/:libreta"*/}
-      <Routes>  
-         <Route path="/" element={<Home cantidadAlumnos={alumnos.length} />} />
-        <Route path="/"
-        element={
-          <>
-          <AlumnoFormulario onAgregar={agregarAlumno} alumnoEdit={alumnoEditar} boolEdit={editar} onActualizar={actulizarAlumno}/>
-
-          <ListaAlumnos alumnos={alumnos} onEliminar={eliminarAlumno} onEdit={onEdit}/> {/*paso la funcion eliminarAlumno como prop hacia el componente AlumnoLista */}
-          
-          </>
-        }
-      />
-      <Route path="/alumnos/:libreta"
-      element={<AlumnoDetalle alumnos={alumnos} />}
-      />
-      </Routes>
-    </div>
+    <BrowserRouter> 
+ <Menu />
+   <Routes>  
+     <Route path="/" element={ <div className="container mt-4">
+      <Home />
+       </div>} />
+      <Route path="/alumnos" element={<div className="container mt-4">
+          <ListaAlumnos
+          alumnos={alumnos}
+          onEliminar={eliminarAlumno}
+           alumnoEdit={alumnoEditar}
+            boolEdit={editar}
+            onActualizar={actulizarAlumno}
+          />
+           </div> } />
+           <Route path="/alumnos/:libreta" element={
+             <div className="container mt-4">
+               <AlumnoDetalle alumnos={alumnos} />
+              </div>
+               } /> 
+     <Route path="/nuevo-alumno" element={<div className="container mt-4">
+           <h1 className="nuevo">Registrar Nuevo Alumno</h1>
+           <AlumnoFormulario
+            onAgregar={agregarAlumno}
+            alumnoEdit={alumnoEditar}
+            boolEdit={editar}
+            onActualizar={actulizarAlumno}
+             />
+             </div> } />
+      <Route path="/acerca-de" element={<AcercaDe />} />
+      <Route path="*" element={<div><h1>404-pagina no encontrada</h1></div>}/>
+ </Routes>
+ </BrowserRouter>
 );
 };
 export default App;
