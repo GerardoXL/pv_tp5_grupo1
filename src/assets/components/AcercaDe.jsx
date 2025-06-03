@@ -9,7 +9,7 @@ export default function AcercaDe(){
             </p>
             <p className='acerca-parrafo'>Esta aplicación permite gestionar alumnos: agregar, editar, eliminar y ver detalles de cada uno</p>
             <h3 className='acerca-subtitulo'>Integrantes</h3>
-            <Row xs={1} sm={2} md={3} className="g-4">
+            <Row className="g-4">
             {[
                 {   nombre: 'Abregu Miguel', 
                     img: 'https://avatars.githubusercontent.com/u/122323946?v=4',

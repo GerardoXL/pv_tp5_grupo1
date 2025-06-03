@@ -1,22 +1,16 @@
 import AlumnoFormulario from "./AlumnoAgregar";
 import { Button, Col } from 'react-bootstrap'; //estilo para el boton
+import { Link } from "react-router-dom";
+const AlumnoEditar = ({luEditar}) => {
 
-const AlumnoEditar = ({luEditar,onEdit}) => {
-
-    const handleEditar = () =>{
-        const prodEdit = {
-            lu: luEditar,
-            estado: true
-        }
-        
-        onEdit(prodEdit);
-    }
 
     return(
         <>
         <div>
             <Col md={4 }>
-            <Button variant="success" onClick={handleEditar}>Editar</Button>
+            <Link to={`/alumnos/editar/${luEditar}`}>
+                <Button variant="success" className="m-1">Editar</Button>
+            </Link>
             </Col>
         </div>
         </>

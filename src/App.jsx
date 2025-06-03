@@ -6,6 +6,7 @@ import AlumnoDetalle from "./assets/components/AlumnoDetalle";
 import Menu from "./assets/components/Navbar";
 import Home from "./assets/components/Home";
 import AcercaDe from "./assets/components/Acercade";
+import FormularioEdit from "./assets/components/AlumnoFormEdit";
 
 function App() {
 
@@ -31,16 +32,9 @@ const eliminarAlumno = (libreta) =>{
   
 }
 
-const onEdit = (info) =>{
-    setAlumnoEditar( alumnos.find((a) => a.libreta === info.lu));
-    setEditar(info.estado);
-}
-
-const actulizarAlumno = (alumno) =>
+const actulizarAlumno = (id, datosActualizados) =>
 {
-  setAlumnos(alumnos.map((a)=>a.libreta===alumno.libreta ? alumno : a))
-  setEditar(false);
-  setAlumnoEditar({});
+  setAlumnos(alumnos.map((a)=>a.libreta=== id ? {...a,...datosActualizados} : a))
 }
 
 useEffect(() => {
@@ -53,7 +47,7 @@ return(
  <Menu />
    <Routes>  
      <Route path="/" element={ <div className="container mt-4">
-      <Home />
+      <Home cantidadAlumnos={alumnos.length}/>
        </div>} />
       <Route path="/alumnos" element={<div className="container mt-4">
           <ListaAlumnos
@@ -79,6 +73,13 @@ return(
              />
              </div> } />
       <Route path="/acerca-de" element={<AcercaDe />} />
+
+      <Route path="/alumnos/editar/:id" element={<FormularioEdit
+            arrayAlumnos={alumnos}
+            onActualizar={actulizarAlumno}
+            />}
+      />
+
       <Route path="*" element={<div><h1>404-pagina no encontrada</h1></div>}/>
  </Routes>
  </BrowserRouter>

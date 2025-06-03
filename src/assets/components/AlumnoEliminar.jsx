@@ -11,7 +11,7 @@ export default function AlumnoEliminar({ libreta, onEliminar }) {
 
     return (
         <Col md={4} >
-        <Button variant="danger" onClick={manejarClick}>
+        <Button variant="danger" onClick={manejarClick} className="m-1">
             Eliminar
         </Button>
         </Col>
