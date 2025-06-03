@@ -17,9 +17,9 @@ export default function AlumnoItem({ alumno, onEliminar, onEdit }) { // Añadido
           </Card.Text>
           <div>
             <AlumnoEliminar libreta={alumno.libreta} onEliminar={onEliminar} />
-            <AlumnoEditar luEditar={alumno.libreta} onEdit={onEdit} /> {/* Asegúrate de que este componente muestre el formulario */ }
+            <AlumnoEditar luEditar={alumno.libreta}/> {/* Asegúrate de que este componente muestre el formulario */ }
             <Link to={`/alumnos/${alumno.libreta}`}>
-              <Button variant="dark">Ver Detalles</Button>
+              <Button variant="dark" className="m-1">Ver Detalles</Button>
             </Link>
           </div>
         </Card.Body>

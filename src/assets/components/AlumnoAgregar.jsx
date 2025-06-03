@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap'; //imporoto para usar boot
 
 let lastLibreta = 999;
 // se declaran las variables de estado
-const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => { 
+const AlumnoFormulario = ({onAgregar}) => { 
    const [nombre , setNombre] = useState("");
    const [apellido , setApellido] = useState("");
    const [email, setEmail] = useState("");
@@ -24,13 +24,6 @@ const AlumnoFormulario = ({onAgregar, alumnoEdit, boolEdit,onActualizar}) => {
   const emailValido = /\S+@\S+\.\S+/; // verifica que tenga el @, que tenga punto y que no hayan espacios
 
 
-useEffect(() => {
-    setNombre(alumnoEdit.nombre);
-    setApellido(alumnoEdit.apellido);
-    setEmail(alumnoEdit.email);
-    setDomicilio(alumnoEdit.domicilio);
-    setTelefono(alumnoEdit.telefono);
-},[alumnoEdit,boolEdit]);
 
 //para validar los datos del formu
 //cambiar a validarFormu
@@ -77,16 +70,8 @@ const nuevoAlumno = {
   estado: true
 }
 
-if(boolEdit !== true)
-  {onAgregar(nuevoAlumno); // se llama a la funcion onAgregar para tomar el objeto y se limpian los campos
+  onAgregar(nuevoAlumno); // se llama a la funcion onAgregar para tomar el objeto y se limpian los campos
   setAccion('agregado');
-  }
-else
-{
-  onActualizar(nuevoAlumno);
-  setAccion('actualizado');
-}
-
 
   setNombre('');
   setApellido('');
@@ -97,6 +82,8 @@ else
       setError({ error: false, mensaje: "" });
       setExito(true);
 }
+
+
 useEffect(() => {
     if (exito || error) {
       const timer = setTimeout(() => {
@@ -213,8 +200,8 @@ return (
 
      
 
-      <Button type="submit" variant="primary">
-        {boolEdit === false ? "Agregar Alumno" : "Editar Alumno"}
+      <Button type="submit" variant="primary" className="m-3">
+        "Agregar Alumno"
       </Button>
     </Form>
     </>
